@@ -1,0 +1,64 @@
+> ANSIBLE.BUILTIN.PING    (/usr/lib/python3/dist-packages/ansible/modules/ping.py)
+
+        A trivial test module, this module always returns `pong' on
+        successful contact. It does not make sense in playbooks, but
+        it is useful from `/usr/bin/ansible' to verify the ability to
+        login and that a usable Python is configured. This is NOT ICMP
+        ping, this is just a trivial test module that requires Python
+        on the remote-node. For Windows targets, use the
+        [ansible.windows.win_ping] module instead. For Network
+        targets, use the [ansible.netcommon.net_ping] module instead.
+
+ADDED IN: historical
+
+OPTIONS (= is mandatory):
+
+- data
+        Data to return for the `ping' return value.
+        If this parameter is set to `crash', the module will cause an
+        exception.
+        default: pong
+        type: str
+
+
+ATTRIBUTES:
+
+        check_mode:
+          description: Can run in check_mode and return changed status prediction without
+            modifying target
+          support: full
+        diff_mode:
+          description: Will return details on what has changed (or possibly needs changing
+            in check_mode), when in diff mode
+          support: none
+        platform:
+          description: Target OS/families that can be operated against
+          platforms: posix
+          support: N/A
+
+SEE ALSO:
+      * Module ansible.netcommon.net_ping
+      * Module ansible.windows.win_ping
+
+
+AUTHOR: Ansible Core Team, Michael DeHaan
+
+EXAMPLES:
+
+# Test we can logon to 'webservers' and execute python with json lib.
+# ansible webservers -m ansible.builtin.ping
+
+- name: Example from an Ansible Playbook
+  ansible.builtin.ping:
+
+- name: Induce an exception to see what happens
+  ansible.builtin.ping:
+    data: crash
+
+
+RETURN VALUES:
+- ping
+        Value provided with the `data' parameter.
+        returned: success
+        sample: pong
+        type: str

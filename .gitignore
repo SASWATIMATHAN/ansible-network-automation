@@ -1,0 +1,32 @@
+# Python
+
+**pycache**/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environments
+
+venv/
+.venv/
+
+# VS Code
+
+.vscode/
+
+# macOS
+
+.DS_Store
+
+# Logs
+
+*.log
+
+# Temporary Files
+
+*.tmp
+*.swp
+
+# Ansible Retry Files
+
+*.retry
