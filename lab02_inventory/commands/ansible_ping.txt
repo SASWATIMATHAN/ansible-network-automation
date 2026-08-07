@@ -1,0 +1,25 @@
+Command:
+ansible -i lab02_inventory/inventory/hosts.ini cisco_routers -m ansible.builtin.ping -k
+
+Result:
+
+R1 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+
+R2 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+
+R3 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+
+Status:
+SUCCESS
+
+All three Cisco IOS routers were successfully reached using
+the Ansible inventory and network_cli connection configuration.

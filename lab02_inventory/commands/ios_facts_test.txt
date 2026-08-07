@@ -1,0 +1,31 @@
+Command:
+ansible -i lab02_inventory/inventory/hosts.ini cisco_routers -m cisco.ios.ios_facts -k
+
+Result:
+
+R1 | FAILED! => {
+    "changed": false,
+    "msg": "timed out"
+}
+
+R2 | FAILED! => {
+    "changed": false,
+    "msg": "timed out"
+}
+
+R3 | FAILED! => {
+    "changed": false,
+    "msg": "timed out"
+}
+
+Status:
+FAILED — connectivity timeout
+
+Note:
+The inventory and Ansible network_cli configuration were valid,
+and ansible.builtin.ping had previously returned SUCCESS for all
+three routers.
+
+The subsequent ios_facts operation timed out while establishing
+the network CLI session. Extensive environmental troubleshooting
+was performed and documented separately.
