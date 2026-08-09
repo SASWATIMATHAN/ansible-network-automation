@@ -1,0 +1,16 @@
+Command:
+
+ansible -i ../lab02_inventory/inventory/hosts.ini R1 -m cisco.ios.ios_command -a "commands='show version'" -k
+
+Result:
+
+[WARNING]: ansible-pylibssh not installed, falling back to paramiko
+
+R1 | FAILED! => {
+"changed": false,
+"msg": "timed out"
+}
+
+Status:
+
+FAILED — R1 timed out during command execution.

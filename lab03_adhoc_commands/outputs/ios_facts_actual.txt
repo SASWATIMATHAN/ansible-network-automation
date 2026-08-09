@@ -1,0 +1,26 @@
+Command:
+
+ansible -i ../lab02_inventory/inventory/hosts.ini cisco_routers -m cisco.ios.ios_facts -k
+
+Result:
+
+[WARNING]: ansible-pylibssh not installed, falling back to paramiko
+
+R2 | FAILED! => {
+"changed": false,
+"msg": "[Errno None] Unable to connect to port 22 on 192.168.100.12"
+}
+
+R1 | FAILED! => {
+"changed": false,
+"msg": "[Errno None] Unable to connect to port 22 on 192.168.100.11"
+}
+
+R3 | FAILED! => {
+"changed": false,
+"msg": "[Errno None] Unable to connect to port 22 on 192.168.100.13"
+}
+
+Status:
+
+FAILED — SSH connection to port 22 was unavailable from the WSL environment.

@@ -1,0 +1,26 @@
+Command:
+
+ansible -i ../lab02_inventory/inventory/hosts.ini cisco_routers -m cisco.ios.ios_command -a "commands=['show version','show ip interface brief']" -k
+
+Result:
+
+[WARNING]: ansible-pylibssh not installed, falling back to paramiko
+
+R1 | FAILED! => {
+"changed": false,
+"msg": "timed out"
+}
+
+R3 | FAILED! => {
+"changed": false,
+"msg": "timed out"
+}
+
+R2 | FAILED! => {
+"changed": false,
+"msg": "timed out"
+}
+
+Status:
+
+FAILED — all three routers timed out during execution.
