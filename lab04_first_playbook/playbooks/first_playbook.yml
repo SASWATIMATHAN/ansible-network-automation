@@ -1,0 +1,15 @@
+---
+- name: First Cisco IOS Ansible Playbook
+  hosts: cisco_routers
+  gather_facts: false
+
+  tasks:
+    - name: Display router hostname
+      cisco.ios.ios_command:
+        commands:
+          - show running-config | include hostname
+      register: hostname_output
+
+    - name: Display hostname output
+      ansible.builtin.debug:
+        var: hostname_output.stdout_lines
