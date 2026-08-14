@@ -1,0 +1,13 @@
+
+PLAY [Lab 07 - Configure Cisco IOS Interface] **********************************
+
+TASK [Configure FastEthernet0/0 description] ***********************************
+ok: [R1]
+ok: [R3]
+ok: [R2]
+
+PLAY RECAP *********************************************************************
+R1                         : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+R2                         : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+R3                         : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

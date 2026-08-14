@@ -1,0 +1,15 @@
+---
+- name: Lab 07 - Verify Cisco IOS Configuration
+  hosts: cisco_routers
+  gather_facts: false
+
+  tasks:
+    - name: Verify FastEthernet0/0 configuration
+      cisco.ios.ios_command:
+        commands:
+          - show running-config | section interface FastEthernet0/0
+      register: verification_output
+
+    - name: Display verified configuration
+      ansible.builtin.debug:
+        var: verification_output.stdout_lines

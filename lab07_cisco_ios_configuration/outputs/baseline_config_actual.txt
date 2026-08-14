@@ -1,0 +1,45 @@
+
+PLAY [Lab 07 - Cisco IOS Configuration Baseline] *******************************
+
+TASK [Get current interface configuration] *************************************
+ok: [R1]
+ok: [R2]
+ok: [R3]
+
+TASK [Display current interface configuration] *********************************
+ok: [R1] => {
+    "baseline_output.stdout_lines": [
+        [
+            "interface FastEthernet0/0",
+            " ip address 192.168.40.10 255.255.255.0",
+            " duplex auto",
+            " speed auto"
+        ]
+    ]
+}
+ok: [R2] => {
+    "baseline_output.stdout_lines": [
+        [
+            "interface FastEthernet0/0",
+            " ip address 192.168.40.11 255.255.255.0",
+            " duplex auto",
+            " speed auto"
+        ]
+    ]
+}
+ok: [R3] => {
+    "baseline_output.stdout_lines": [
+        [
+            "interface FastEthernet0/0",
+            " ip address 192.168.40.12 255.255.255.0",
+            " duplex auto",
+            " speed auto"
+        ]
+    ]
+}
+
+PLAY RECAP *********************************************************************
+R1                         : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+R2                         : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+R3                         : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

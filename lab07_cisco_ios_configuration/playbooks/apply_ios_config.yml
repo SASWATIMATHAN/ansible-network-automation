@@ -1,0 +1,12 @@
+---
+- name: Lab 07 - Configure Cisco IOS Interface
+  hosts: cisco_routers
+  gather_facts: false
+
+  tasks:
+    - name: Configure FastEthernet0/0 description
+      cisco.ios.ios_config:
+        parents:
+          - interface FastEthernet0/0
+        lines:
+          - description Managed by Ansible - Lab 07
