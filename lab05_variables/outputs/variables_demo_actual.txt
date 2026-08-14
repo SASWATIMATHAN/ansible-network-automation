@@ -1,0 +1,79 @@
+
+PLAY [Ansible Variables Demonstration] *****************************************
+
+TASK [Display lab variables] ***************************************************
+ok: [R1] => {
+    "msg": [
+        "Lab: Lab 05 - Variables",
+        "Project: Ansible Network Automation",
+        "Management Network: 192.168.40.0/24"
+    ]
+}
+ok: [R2] => {
+    "msg": [
+        "Lab: Lab 05 - Variables",
+        "Project: Ansible Network Automation",
+        "Management Network: 192.168.40.0/24"
+    ]
+}
+ok: [R3] => {
+    "msg": [
+        "Lab: Lab 05 - Variables",
+        "Project: Ansible Network Automation",
+        "Management Network: 192.168.40.0/24"
+    ]
+}
+
+TASK [Display router variables] ************************************************
+ok: [R1] => {
+    "msg": [
+        "Router: R1",
+        "Management IP: 192.168.40.10"
+    ]
+}
+ok: [R2] => {
+    "msg": [
+        "Router: R2",
+        "Management IP: 192.168.40.11"
+    ]
+}
+ok: [R3] => {
+    "msg": [
+        "Router: R3",
+        "Management IP: 192.168.40.12"
+    ]
+}
+
+TASK [Retrieve Cisco hostname] *************************************************
+ok: [R3]
+ok: [R2]
+ok: [R1]
+
+TASK [Display Cisco hostname] **************************************************
+ok: [R1] => {
+    "hostname_output.stdout_lines": [
+        [
+            "hostname R1"
+        ]
+    ]
+}
+ok: [R2] => {
+    "hostname_output.stdout_lines": [
+        [
+            "hostname R2"
+        ]
+    ]
+}
+ok: [R3] => {
+    "hostname_output.stdout_lines": [
+        [
+            "hostname R3"
+        ]
+    ]
+}
+
+PLAY RECAP *********************************************************************
+R1                         : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+R2                         : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+R3                         : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

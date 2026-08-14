@@ -1,0 +1,34 @@
+---
+- name: Ansible Variables Demonstration
+  hosts: cisco_routers
+  gather_facts: false
+
+  vars:
+    lab_name: "Lab 05 - Variables"
+    project_name: "Ansible Network Automation"
+    management_network: "192.168.40.0/24"
+
+  tasks:
+
+    - name: Display lab variables
+      ansible.builtin.debug:
+        msg:
+          - "Lab: {{ lab_name }}"
+          - "Project: {{ project_name }}"
+          - "Management Network: {{ management_network }}"
+
+    - name: Display router variables
+      ansible.builtin.debug:
+        msg:
+          - "Router: {{ inventory_hostname }}"
+          - "Management IP: {{ ansible_host }}"
+
+    - name: Retrieve Cisco hostname
+      cisco.ios.ios_command:
+        commands:
+          - show running-config | include hostname
+      register: hostname_output
+
+    - name: Display Cisco hostname
+      ansible.builtin.debug:
+        var: hostname_output.stdout_lines
