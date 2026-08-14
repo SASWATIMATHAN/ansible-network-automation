@@ -1,0 +1,16 @@
+---
+- name: Lab 06 - Verify Jinja2 Configuration
+  hosts: cisco_routers
+  gather_facts: false
+
+  tasks:
+
+    - name: Show running configuration
+      cisco.ios.ios_command:
+        commands:
+          - show run
+      register: running_config
+
+    - name: Display interface configuration
+      ansible.builtin.debug:
+        msg: "{{ running_config.stdout[0] | regex_search('interface FastEthernet0/0[\\s\\S]*?!', multiline=True) }}"

@@ -1,0 +1,24 @@
+
+PLAY [Lab 06 - Verify Jinja2 Configuration] ************************************
+
+TASK [Show running configuration] **********************************************
+ok: [R1]
+ok: [R2]
+ok: [R3]
+
+TASK [Display interface configuration] *****************************************
+ok: [R2] => {
+    "msg": "interface FastEthernet0/0\n description Managed by Ansible - R2\n ip address 192.168.40.11 255.255.255.0\n duplex auto\n speed auto\n!"
+}
+ok: [R1] => {
+    "msg": "interface FastEthernet0/0\n description Managed by Ansible - R1\n ip address 192.168.40.10 255.255.255.0\n duplex auto\n speed auto\n!"
+}
+ok: [R3] => {
+    "msg": "interface FastEthernet0/0\n description Managed by Ansible - R3\n ip address 192.168.40.12 255.255.255.0\n duplex auto\n speed auto\n!"
+}
+
+PLAY RECAP *********************************************************************
+R1                         : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+R2                         : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+R3                         : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
