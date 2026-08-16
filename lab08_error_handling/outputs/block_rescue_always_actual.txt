@@ -1,0 +1,45 @@
+
+PLAY [Lab 08 - Block Rescue Always Demonstration] ******************************
+
+TASK [Verify router is reachable] **********************************************
+ok: [R2]
+ok: [R1]
+ok: [R3]
+
+TASK [Intentionally generate a controlled failure] *****************************
+fatal: [R1]: FAILED! => {"changed": false, "msg": "Intentional Lab 08 failure for error-handling demonstration"}
+fatal: [R2]: FAILED! => {"changed": false, "msg": "Intentional Lab 08 failure for error-handling demonstration"}
+fatal: [R3]: FAILED! => {"changed": false, "msg": "Intentional Lab 08 failure for error-handling demonstration"}
+
+TASK [Handle the failure] ******************************************************
+ok: [R1] => {
+    "msg": "RESCUE: Failure detected and handled successfully"
+}
+ok: [R2] => {
+    "msg": "RESCUE: Failure detected and handled successfully"
+}
+ok: [R3] => {
+    "msg": "RESCUE: Failure detected and handled successfully"
+}
+
+TASK [Collect router status after failure] *************************************
+ok: [R1]
+ok: [R3]
+ok: [R2]
+
+TASK [Final error-handling status] *********************************************
+ok: [R1] => {
+    "msg": "ALWAYS: Error-handling workflow completed"
+}
+ok: [R2] => {
+    "msg": "ALWAYS: Error-handling workflow completed"
+}
+ok: [R3] => {
+    "msg": "ALWAYS: Error-handling workflow completed"
+}
+
+PLAY RECAP *********************************************************************
+R1                         : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=1    ignored=0   
+R2                         : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=1    ignored=0   
+R3                         : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=1    ignored=0   
+

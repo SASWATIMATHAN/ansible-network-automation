@@ -1,0 +1,34 @@
+---
+- name: Lab 08 - failed_when Validation
+  hosts: cisco_routers
+  gather_facts: false
+
+  tasks:
+
+    - name: Validate FastEthernet0/0 operational state
+      block:
+
+        - name: Collect interface status
+          cisco.ios.ios_command:
+            commands:
+              - show ip interface brief
+          register: interface_status
+
+        - name: Fail if FastEthernet0/0 is not operational
+          ansible.builtin.assert:
+            that:
+              - "'up                    up' in interface_status.stdout[0]"
+            fail_msg: "FastEthernet0/0 is not operational"
+            success_msg: "FastEthernet0/0 is operational"
+
+      rescue:
+
+        - name: Report interface validation failure
+          ansible.builtin.debug:
+            msg: "RESCUE: FastEthernet0/0 validation failed"
+
+      always:
+
+        - name: Report validation completion
+          ansible.builtin.debug:
+            msg: "ALWAYS: Interface validation completed"

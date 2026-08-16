@@ -1,0 +1,39 @@
+---
+- name: Lab 08 - Block Rescue Always Demonstration
+  hosts: cisco_routers
+  gather_facts: false
+
+  tasks:
+
+    - name: Demonstrate Ansible error handling
+      block:
+
+        - name: Verify router is reachable
+          cisco.ios.ios_command:
+            commands:
+              - show ip interface brief
+
+        - name: Intentionally generate a controlled failure
+          ansible.builtin.fail:
+            msg: "Intentional Lab 08 failure for error-handling demonstration"
+
+        - name: This task should not execute
+          ansible.builtin.debug:
+            msg: "This task should be skipped because the previous task failed"
+
+      rescue:
+
+        - name: Handle the failure
+          ansible.builtin.debug:
+            msg: "RESCUE: Failure detected and handled successfully"
+
+        - name: Collect router status after failure
+          cisco.ios.ios_command:
+            commands:
+              - show ip interface brief
+
+      always:
+
+        - name: Final error-handling status
+          ansible.builtin.debug:
+            msg: "ALWAYS: Error-handling workflow completed"

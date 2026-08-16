@@ -1,0 +1,43 @@
+
+PLAY [Lab 08 - Ignore Errors Demonstration] ************************************
+
+TASK [Generate a controlled failure] *******************************************
+fatal: [R1]: FAILED! => {"changed": false, "msg": "Intentional failure for ignore_errors demonstration"}
+...ignoring
+fatal: [R2]: FAILED! => {"changed": false, "msg": "Intentional failure for ignore_errors demonstration"}
+...ignoring
+fatal: [R3]: FAILED! => {"changed": false, "msg": "Intentional failure for ignore_errors demonstration"}
+...ignoring
+
+TASK [Continue after ignored failure] ******************************************
+ok: [R1] => {
+    "msg": "Execution continued after the failure"
+}
+ok: [R2] => {
+    "msg": "Execution continued after the failure"
+}
+ok: [R3] => {
+    "msg": "Execution continued after the failure"
+}
+
+TASK [Verify router remains reachable] *****************************************
+ok: [R1]
+ok: [R3]
+ok: [R2]
+
+TASK [Final status] ************************************************************
+ok: [R1] => {
+    "msg": "IGNORE_ERRORS workflow completed"
+}
+ok: [R2] => {
+    "msg": "IGNORE_ERRORS workflow completed"
+}
+ok: [R3] => {
+    "msg": "IGNORE_ERRORS workflow completed"
+}
+
+PLAY RECAP *********************************************************************
+R1                         : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1   
+R2                         : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1   
+R3                         : ok=4    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1   
+

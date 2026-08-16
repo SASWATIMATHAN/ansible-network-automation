@@ -1,0 +1,37 @@
+---
+- name: Lab 08 - failed_when with Rescue
+  hosts: cisco_routers
+  gather_facts: false
+
+  tasks:
+
+    - name: Validate interface state using failed_when
+      block:
+
+        - name: Check FastEthernet0/0 status
+          cisco.ios.ios_command:
+            commands:
+              - show ip interface brief
+          register: interface_status
+          failed_when: "'FAKE_STATE' not in interface_status.stdout[0]"
+
+        - name: This task should not execute
+          ansible.builtin.debug:
+            msg: "This task should not execute after failed_when triggers"
+
+      rescue:
+
+        - name: Handle failed validation
+          ansible.builtin.debug:
+            msg: "RESCUE: failed_when detected a validation failure"
+
+        - name: Verify router remains reachable
+          cisco.ios.ios_command:
+            commands:
+              - show ip interface brief
+
+      always:
+
+        - name: Report completion
+          ansible.builtin.debug:
+            msg: "ALWAYS: failed_when validation workflow completed"

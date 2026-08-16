@@ -1,0 +1,40 @@
+
+PLAY [Lab 08 - failed_when with Rescue] ****************************************
+
+TASK [Check FastEthernet0/0 status] ********************************************
+fatal: [R1]: FAILED! => {"changed": false, "failed_when_result": true, "stdout": ["Interface                  IP-Address      OK? Method Status                Protocol\nFastEthernet0/0            192.168.40.10   YES NVRAM  up                    up      \nSerial0/0                  unassigned      YES NVRAM  administratively down down    \nFastEthernet0/1            unassigned      YES NVRAM  administratively down down    \nSerial0/1                  unassigned      YES NVRAM  administratively down down    \nSerial0/2                  unassigned      YES NVRAM  administratively down down    \nSerial0/3                  unassigned      YES NVRAM  administratively down down"], "stdout_lines": [["Interface                  IP-Address      OK? Method Status                Protocol", "FastEthernet0/0            192.168.40.10   YES NVRAM  up                    up      ", "Serial0/0                  unassigned      YES NVRAM  administratively down down    ", "FastEthernet0/1            unassigned      YES NVRAM  administratively down down    ", "Serial0/1                  unassigned      YES NVRAM  administratively down down    ", "Serial0/2                  unassigned      YES NVRAM  administratively down down    ", "Serial0/3                  unassigned      YES NVRAM  administratively down down"]]}
+fatal: [R3]: FAILED! => {"changed": false, "failed_when_result": true, "stdout": ["Interface                  IP-Address      OK? Method Status                Protocol\nFastEthernet0/0            192.168.40.12   YES NVRAM  up                    up      \nSerial0/0                  unassigned      YES NVRAM  administratively down down    \nFastEthernet0/1            unassigned      YES NVRAM  administratively down down    \nSerial0/1                  unassigned      YES NVRAM  administratively down down    \nSerial0/2                  unassigned      YES NVRAM  administratively down down    \nSerial0/3                  unassigned      YES NVRAM  administratively down down"], "stdout_lines": [["Interface                  IP-Address      OK? Method Status                Protocol", "FastEthernet0/0            192.168.40.12   YES NVRAM  up                    up      ", "Serial0/0                  unassigned      YES NVRAM  administratively down down    ", "FastEthernet0/1            unassigned      YES NVRAM  administratively down down    ", "Serial0/1                  unassigned      YES NVRAM  administratively down down    ", "Serial0/2                  unassigned      YES NVRAM  administratively down down    ", "Serial0/3                  unassigned      YES NVRAM  administratively down down"]]}
+fatal: [R2]: FAILED! => {"changed": false, "failed_when_result": true, "stdout": ["Interface                  IP-Address      OK? Method Status                Protocol\nFastEthernet0/0            192.168.40.11   YES NVRAM  up                    up      \nSerial0/0                  unassigned      YES NVRAM  administratively down down    \nFastEthernet0/1            unassigned      YES NVRAM  administratively down down    \nSerial0/1                  unassigned      YES NVRAM  administratively down down    \nSerial0/2                  unassigned      YES NVRAM  administratively down down    \nSerial0/3                  unassigned      YES NVRAM  administratively down down"], "stdout_lines": [["Interface                  IP-Address      OK? Method Status                Protocol", "FastEthernet0/0            192.168.40.11   YES NVRAM  up                    up      ", "Serial0/0                  unassigned      YES NVRAM  administratively down down    ", "FastEthernet0/1            unassigned      YES NVRAM  administratively down down    ", "Serial0/1                  unassigned      YES NVRAM  administratively down down    ", "Serial0/2                  unassigned      YES NVRAM  administratively down down    ", "Serial0/3                  unassigned      YES NVRAM  administratively down down"]]}
+
+TASK [Handle failed validation] ************************************************
+ok: [R1] => {
+    "msg": "RESCUE: failed_when detected a validation failure"
+}
+ok: [R2] => {
+    "msg": "RESCUE: failed_when detected a validation failure"
+}
+ok: [R3] => {
+    "msg": "RESCUE: failed_when detected a validation failure"
+}
+
+TASK [Verify router remains reachable] *****************************************
+ok: [R1]
+ok: [R3]
+ok: [R2]
+
+TASK [Report completion] *******************************************************
+ok: [R1] => {
+    "msg": "ALWAYS: failed_when validation workflow completed"
+}
+ok: [R2] => {
+    "msg": "ALWAYS: failed_when validation workflow completed"
+}
+ok: [R3] => {
+    "msg": "ALWAYS: failed_when validation workflow completed"
+}
+
+PLAY RECAP *********************************************************************
+R1                         : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=1    ignored=0   
+R2                         : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=1    ignored=0   
+R3                         : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=1    ignored=0   
+
