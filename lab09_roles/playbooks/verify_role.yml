@@ -1,0 +1,16 @@
+---
+- name: Lab 09 - Verify Ansible Role Configuration
+  hosts: cisco_routers
+  gather_facts: false
+
+  tasks:
+
+    - name: Verify FastEthernet0/0 description
+      cisco.ios.ios_command:
+        commands:
+          - show running-config | include description
+      register: role_verification
+
+    - name: Display role verification result
+      ansible.builtin.debug:
+        var: role_verification.stdout_lines

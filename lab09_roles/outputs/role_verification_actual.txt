@@ -1,0 +1,36 @@
+
+PLAY [Lab 09 - Verify Ansible Role Configuration] ******************************
+
+TASK [Verify FastEthernet0/0 description] **************************************
+ok: [R3]
+ok: [R1]
+ok: [R2]
+
+TASK [Display role verification result] ****************************************
+ok: [R1] => {
+    "role_verification.stdout_lines": [
+        [
+            "description Managed by Ansible Role - Lab 09"
+        ]
+    ]
+}
+ok: [R3] => {
+    "role_verification.stdout_lines": [
+        [
+            "description Managed by Ansible Role - Lab 09"
+        ]
+    ]
+}
+ok: [R2] => {
+    "role_verification.stdout_lines": [
+        [
+            "description Managed by Ansible Role - Lab 09"
+        ]
+    ]
+}
+
+PLAY RECAP *********************************************************************
+R1                         : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+R2                         : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+R3                         : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

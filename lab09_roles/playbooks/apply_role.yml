@@ -1,0 +1,8 @@
+---
+- name: Lab 09 - Ansible Roles
+  hosts: cisco_routers
+  gather_facts: false
+
+  roles:
+    - cisco_ios_config
+
