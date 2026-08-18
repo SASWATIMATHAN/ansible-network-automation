@@ -1,0 +1,63 @@
+
+PLAY [Lab 10 - Verify Ansible Vault Configuration] *****************************
+
+TASK [Verify interface description] ********************************************
+ok: [R1]
+ok: [R2]
+ok: [R3]
+
+TASK [Display verification result] *********************************************
+ok: [R1] => {
+    "vault_verification.stdout_lines": [
+        [
+            "Building configuration...",
+            "",
+            "Current configuration : 145 bytes",
+            "!",
+            "interface FastEthernet0/0",
+            " description Managed by Ansible Vault - Lab 10",
+            " ip address 192.168.40.10 255.255.255.0",
+            " duplex auto",
+            " speed auto",
+            "end"
+        ]
+    ]
+}
+ok: [R2] => {
+    "vault_verification.stdout_lines": [
+        [
+            "Building configuration...",
+            "",
+            "Current configuration : 145 bytes",
+            "!",
+            "interface FastEthernet0/0",
+            " description Managed by Ansible Vault - Lab 10",
+            " ip address 192.168.40.11 255.255.255.0",
+            " duplex auto",
+            " speed auto",
+            "end"
+        ]
+    ]
+}
+ok: [R3] => {
+    "vault_verification.stdout_lines": [
+        [
+            "Building configuration...",
+            "",
+            "Current configuration : 145 bytes",
+            "!",
+            "interface FastEthernet0/0",
+            " description Managed by Ansible Vault - Lab 10",
+            " ip address 192.168.40.12 255.255.255.0",
+            " duplex auto",
+            " speed auto",
+            "end"
+        ]
+    ]
+}
+
+PLAY RECAP *********************************************************************
+R1                         : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+R2                         : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+R3                         : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+

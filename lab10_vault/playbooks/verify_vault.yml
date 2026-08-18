@@ -1,0 +1,19 @@
+---
+- name: Lab 10 - Verify Ansible Vault Configuration
+  hosts: cisco_routers
+  gather_facts: false
+
+  vars_files:
+    - ../group_vars/cisco_routers/vault.yml
+
+  tasks:
+
+    - name: Verify interface description
+      cisco.ios.ios_command:
+        commands:
+          - "show running-config interface FastEthernet0/0"
+      register: vault_verification
+
+    - name: Display verification result
+      ansible.builtin.debug:
+        var: vault_verification.stdout_lines

@@ -1,0 +1,17 @@
+---
+- name: Lab 10 - Ansible Vault
+  hosts: cisco_routers
+  gather_facts: false
+
+  vars_files:
+    - ../group_vars/cisco_routers/vault.yml
+
+  tasks:
+
+    - name: Configure interface using Vault-protected credentials
+      cisco.ios.ios_interfaces:
+        config:
+          - name: "FastEthernet0/0"
+            description: "Managed by Ansible Vault - Lab 10"
+            enabled: true
+        state: merged
