@@ -1,8 +1,7 @@
 ---
-- name: Configure FastEthernet0/0 description
+- name: Configure Cisco IOS interface
   cisco.ios.ios_interfaces:
     config:
-      - name: FastEthernet0/0
-        description: "Managed by Ansible Role - Lab 09"
-    state: merged
-
+      - name: "{{ cisco_ios_interface }}"
+        description: "{{ cisco_ios_interface_description }}"
+    state: "{{ cisco_ios_config_state }}"

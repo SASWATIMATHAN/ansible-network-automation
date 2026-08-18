@@ -1,0 +1,4 @@
+---
+# Role-specific configuration state
+
+cisco_ios_config_state: "merged"

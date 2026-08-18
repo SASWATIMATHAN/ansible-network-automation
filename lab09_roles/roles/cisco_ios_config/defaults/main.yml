@@ -1,0 +1,6 @@
+---
+# Default interface configuration for the Cisco IOS role
+
+cisco_ios_interface: "FastEthernet0/0"
+
+cisco_ios_interface_description: "Managed by Ansible Role - Lab 09"

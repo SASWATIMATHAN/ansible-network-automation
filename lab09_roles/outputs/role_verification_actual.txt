@@ -2,9 +2,9 @@
 PLAY [Lab 09 - Verify Ansible Role Configuration] ******************************
 
 TASK [Verify FastEthernet0/0 description] **************************************
-ok: [R3]
 ok: [R1]
 ok: [R2]
+ok: [R3]
 
 TASK [Display role verification result] ****************************************
 ok: [R1] => {
@@ -14,14 +14,14 @@ ok: [R1] => {
         ]
     ]
 }
-ok: [R3] => {
+ok: [R2] => {
     "role_verification.stdout_lines": [
         [
             "description Managed by Ansible Role - Lab 09"
         ]
     ]
 }
-ok: [R2] => {
+ok: [R3] => {
     "role_verification.stdout_lines": [
         [
             "description Managed by Ansible Role - Lab 09"

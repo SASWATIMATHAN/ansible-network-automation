@@ -1,10 +1,10 @@
 
 PLAY [Lab 09 - Ansible Roles] **************************************************
 
-TASK [cisco_ios_config : Configure FastEthernet0/0 description] ****************
-ok: [R3]
-ok: [R2]
+TASK [cisco_ios_config : Configure Cisco IOS interface] ************************
 ok: [R1]
+ok: [R2]
+ok: [R3]
 
 PLAY RECAP *********************************************************************
 R1                         : ok=1    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

@@ -160,15 +160,32 @@ roles/
 
 ### 📌 Role Components
 
-| Component           | Purpose                                |
-| ------------------- | -------------------------------------- |
-| `tasks/main.yml`    | Contains the main configuration tasks  |
-| `defaults/main.yml` | Defines default role variables         |
-| `vars/main.yml`     | Defines role-specific variables        |
-| `handlers/main.yml` | Standard location for role handlers    |
-| `templates/`        | Standard location for Jinja2 templates |
+| Component           | Purpose                                                                        |
+| ------------------- | ------------------------------------------------------------------------------ |
+| `tasks/main.yml`    | Contains the main Cisco IOS configuration task and consumes the role variables |
+| `defaults/main.yml` | Defines the default interface and interface description                        |
+| `vars/main.yml`     | Defines the role-specific configuration state (`merged`)                       |
+| `handlers/main.yml` | Standard handler location; no handler is required for this role                |
+| `templates/`        | Standard Jinja2 template location; no template is required for this role       |
 
-The role is intentionally kept simple for this lab so that the **core concept of role-based organization** remains clear.
+The role is intentionally kept simple while still demonstrating a **real separation between configuration data and role logic**.
+
+### ⚙️ Variables Used by the Role
+
+`defaults/main.yml` defines:
+
+```yaml
+cisco_ios_interface: "FastEthernet0/0"
+cisco_ios_interface_description: "Managed by Ansible Role - Lab 09"
+```
+
+`vars/main.yml` defines:
+
+```yaml
+cisco_ios_config_state: "merged"
+```
+
+The task in `tasks/main.yml` consumes these variables instead of hard-coding the interface, description, and configuration state.
 
 ---
 
@@ -354,23 +371,32 @@ The `cisco_ios_config` role is divided into standard Ansible Role components.
 
 ### 📝 `tasks/main.yml`
 
-Contains the main Cisco IOS configuration task responsible for configuring `FastEthernet0/0`.
+Contains the main Cisco IOS configuration task. The task uses the role variables to configure the selected interface and description.
 
 ### ⚙️ `defaults/main.yml`
 
-Provides default values used by the role.
+Provides the default values:
+
+```text
+cisco_ios_interface
+cisco_ios_interface_description
+```
 
 ### 📦 `vars/main.yml`
 
-Contains role-specific variables.
+Contains the role-specific configuration state:
+
+```text
+cisco_ios_config_state: "merged"
+```
 
 ### 🔔 `handlers/main.yml`
 
-Provides the standard location for role handlers. The directory is included as part of the role structure even though this lab does not require a handler-driven operation.
+Provides the standard location for role handlers. This role does not require a handler-driven operation, so no handler is used.
 
 ### 🧩 `templates/`
 
-Provides the standard location for Jinja2 templates that can be used by the role when template-based configuration is required.
+Provides the standard location for Jinja2 templates. This role uses the Cisco IOS module directly, so no template is required.
 
 This organization keeps the role modular and makes it easier to extend in future network automation labs.
 

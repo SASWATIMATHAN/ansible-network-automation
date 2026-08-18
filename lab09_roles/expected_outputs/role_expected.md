@@ -37,6 +37,17 @@ R3 : ok=1 changed=1 unreachable=0 failed=0
 
 The `changed=1` result indicates that the desired configuration was applied to each router.
 
+The role uses variables rather than hard-coded values:
+
+```text
+defaults/main.yml
+├── cisco_ios_interface
+└── cisco_ios_interface_description
+
+vars/main.yml
+└── cisco_ios_config_state
+```
+
 ---
 
 ## ⚙️ 2. Expected Configuration
@@ -213,6 +224,21 @@ roles/
         └── main.yml
 ```
 
+The expected variable definitions are:
+
+```yaml
+# defaults/main.yml
+cisco_ios_interface: "FastEthernet0/0"
+cisco_ios_interface_description: "Managed by Ansible Role - Lab 09"
+```
+
+```yaml
+# vars/main.yml
+cisco_ios_config_state: "merged"
+```
+
+The task in `tasks/main.yml` should consume these variables when configuring the interface. The `handlers/` and `templates/` locations are part of the standard role structure, but no handler or Jinja2 template is required for this lab.
+
 The surrounding Lab 09 structure should contain:
 
 ```text
@@ -260,6 +286,8 @@ Lab 09 is considered successful when all of the following conditions are satisfi
 * ✅ R2 is configured successfully.
 * ✅ R3 is configured successfully.
 * ✅ `FastEthernet0/0` receives the required description.
+* ✅ Default role variables are defined and consumed by the role task.
+* ✅ The role-specific configuration state is defined in `vars/main.yml`.
 * ✅ Verification confirms the expected configuration.
 * ✅ Verification produces `changed=0`.
 * ✅ A second role execution produces `changed=0`.
